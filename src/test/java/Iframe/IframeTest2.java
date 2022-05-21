@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 public class IframeTest2 {
     /*
@@ -41,10 +43,18 @@ public class IframeTest2 {
         // 1) http://demo.guru99.com/test/guru99home/ sitesine gidiniz
         driver.get("http://demo.guru99.com/test/guru99home/");
         //2) sayfadaki iframe sayısını bulunuz.
-        List<WebElement> iframe= driver.findElements(By.xpath("//iframe"));
+
+        List<WebElement> iframe=driver.findElements(By.xpath("//iframe"));
         System.out.println(iframe.size());
+
         //3) ilk iframe'deki (Youtube) play butonuna tıklayınız.
-       //driver.switchTo().frame(iframe.get(0));
+        WebElement ilkIframe= driver.findElement(By.xpath("//iframe[@src='https:/www.youtube.com/embed/lYCEQqSM08I']"));
+        driver.switchTo().frame(ilkIframe);
+        driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+
+
+
 
 
 
